@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/tiruskimani/MSDATA/CIS531ProgtechniquesDSA/project%20docs/recommender_sentiments_spark/mlruns/0/9fa4979f60774303a34963a5c1fdce5b/artifacts
+end_time: 1727997151005
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 9fa4979f60774303a34963a5c1fdce5b
+run_name: zealous-snake-284
+run_uuid: 9fa4979f60774303a34963a5c1fdce5b
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1727997144355
+status: 3
+tags: []
+user_id: tiruskimani

@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/tiruskimani/MSDATA/CIS531ProgtechniquesDSA/project%20docs/recommender_sentiments_spark/mlruns/0/128a729d33b9451288abfe033aa4b3bc/artifacts
+end_time: 1727989945402
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 128a729d33b9451288abfe033aa4b3bc
+run_name: bedecked-trout-2
+run_uuid: 128a729d33b9451288abfe033aa4b3bc
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1727989938402
+status: 3
+tags: []
+user_id: tiruskimani

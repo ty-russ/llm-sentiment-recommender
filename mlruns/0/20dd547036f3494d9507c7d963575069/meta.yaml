@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/tiruskimani/MSDATA/CIS531ProgtechniquesDSA/project%20docs/recommender_sentiments_spark/mlruns/0/20dd547036f3494d9507c7d963575069/artifacts
+end_time: 1727992232240
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 20dd547036f3494d9507c7d963575069
+run_name: monumental-ape-265
+run_uuid: 20dd547036f3494d9507c7d963575069
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1727992225471
+status: 3
+tags: []
+user_id: tiruskimani

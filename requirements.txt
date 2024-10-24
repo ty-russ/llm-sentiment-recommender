@@ -1,0 +1,8 @@
+flask
+mlflow
+sentence-transformers
+datasets
+pandas
+pyspark
+faiss-cpu
+numpy

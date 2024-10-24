@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/tiruskimani/MSDATA/CIS531ProgtechniquesDSA/project%20docs/recommender_sentiments_spark/mlruns/0/4314d78f64ad4861b2ff2ca859ee2cc8/artifacts
+end_time: 1727994599451
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 4314d78f64ad4861b2ff2ca859ee2cc8
+run_name: big-carp-902
+run_uuid: 4314d78f64ad4861b2ff2ca859ee2cc8
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1727994592256
+status: 3
+tags: []
+user_id: tiruskimani

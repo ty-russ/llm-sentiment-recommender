@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/tiruskimani/MSDATA/CIS531ProgtechniquesDSA/project%20docs/recommender_sentiments_spark/mlruns/0/7eb347d61bde4d5983b9a117014ca57b/artifacts
+end_time: 1727993135689
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 7eb347d61bde4d5983b9a117014ca57b
+run_name: abrasive-bird-882
+run_uuid: 7eb347d61bde4d5983b9a117014ca57b
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1727993129411
+status: 3
+tags: []
+user_id: tiruskimani

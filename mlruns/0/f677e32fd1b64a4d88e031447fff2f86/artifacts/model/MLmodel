@@ -1,0 +1,28 @@
+artifact_path: model
+flavors:
+  python_function:
+    data: model.sentence_transformer
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sentence_transformers
+    python_version: 3.12.4
+  sentence_transformers:
+    code: null
+    pipeline_model_type: BertModel
+    sentence_transformers_version: 3.1.1
+    source_model_name: sentence-transformers/all-MiniLM-L6-v2
+mlflow_version: 2.16.2
+model_size_bytes: 91829258
+model_uuid: 984c1259a892407f9fbb4dbd8280317e
+run_id: f677e32fd1b64a4d88e031447fff2f86
+saved_input_example_info:
+  artifact_path: input_example.json
+  serving_input_path: serving_input_example.json
+  type: json_object
+signature:
+  inputs: '[{"type": "string", "required": true}]'
+  outputs: '[{"type": "tensor", "tensor-spec": {"dtype": "float32", "shape": [-1,
+    384]}}]'
+  params: null
+utc_time_created: '2024-10-03 22:26:28.605227'

@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/tiruskimani/MSDATA/CIS531ProgtechniquesDSA/project%20docs/recommender_sentiments_spark/mlruns/0/c8abeb8536214799b5efb093ba2351b0/artifacts
+end_time: 1728088133921
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: c8abeb8536214799b5efb093ba2351b0
+run_name: handsome-hound-751
+run_uuid: c8abeb8536214799b5efb093ba2351b0
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1728088124139
+status: 3
+tags: []
+user_id: tiruskimani

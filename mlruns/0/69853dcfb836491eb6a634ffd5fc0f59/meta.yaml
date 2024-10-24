@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/tiruskimani/MSDATA/CIS531ProgtechniquesDSA/project%20docs/recommender_sentiments_spark/mlruns/0/69853dcfb836491eb6a634ffd5fc0f59/artifacts
+end_time: 1727995947916
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 69853dcfb836491eb6a634ffd5fc0f59
+run_name: trusting-fowl-744
+run_uuid: 69853dcfb836491eb6a634ffd5fc0f59
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1727995941145
+status: 3
+tags: []
+user_id: tiruskimani
