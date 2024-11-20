@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+    gpt4all:
+      image: gpt4all
+      build: .
+      environment:
+        - DISPLAY=${DISPLAY}
+        - PATH=${PATH}="/root/gpt4all/bin/chat:/home/user/gpt4all/bin/chat"
+        - XDG_RUNTIME_DIR=/tmp/xdg_runtime_dir
+      volumes:
+        - /tmp/.X11-unix:/tmp/.X11-unix
+          # - ./data/local/share/nomic.ai:/root/.local/share/nomic.ai/GPT4All
+          # - ./data/gpt4all:/root/gpt4all
+        - ./data/local/share/nomic.ai:/home/user/.local/share/nomic.ai/GPT4All
+        - ./data/gpt4all:/home/user/gpt4all
+      network_mode: host

@@ -22,20 +22,21 @@ user_reviews = load_dataset("McAuley-Lab/Amazon-Reviews-2023", "raw_review_All_B
 item_metadata = load_dataset("McAuley-Lab/Amazon-Reviews-2023", "raw_meta_All_Beauty", split="full", trust_remote_code=True)
 
 # Convert datasets to Pandas DataFrames
-print(user_reviews)
+# print(user_reviews)
 # Convert Hugging Face Dataset to Pandas DataFrame
 user_reviews_df = user_reviews['full'].to_pandas()
-print(user_reviews_df)
+item_metadata_df = item_metadata.to_pandas()
+# print(user_reviews_df)
 from pyspark.sql.types import StructType, StructField, StringType, FloatType, IntegerType
 schema = StructType([
     StructField("main_category", StringType(), True),
     StructField("title", StringType(), True),
-    StructField("average_rating", FloatType(), True),
+    StructField("average_rating", StringType(), True),
     StructField("rating_number", IntegerType(), True),
     StructField("features", StringType(), True),
     StructField("description", StringType(), True),
-    StructField("price", FloatType(), True),
-    StructField("images", StringType(), True),
+    StructField("price", StringType(), True),
+    # StructField("images", StringType(), True),
     StructField("videos", StringType(), True),
     StructField("store", StringType(), True),
     StructField("categories", StringType(), True),
@@ -43,29 +44,59 @@ schema = StructType([
     StructField("parent_asin", StringType(), True),
     StructField("bought_together", StringType(), True),
     StructField("subtitle", StringType(), True),
-    StructField("author", StringType(), True)
+    StructField("author", StringType(), True),
+    StructField("product_text", StringType(), True)
 ])
 
+
+
+# print(item_metadata_df)
+# drop columsn
+item_metadata_df = item_metadata_df.drop(columns=['images'])
+# create product descriptions column
+# join column title, main_category, description, categories,features,details 
+# Replace NaN values with empty strings and convert each column to a string
+item_metadata_df["title"] = item_metadata_df["title"].fillna("").astype(str)
+item_metadata_df["main_category"] = item_metadata_df["main_category"].fillna("").astype(str)
+item_metadata_df["description"] = item_metadata_df["description"].fillna("").astype(str)
+
+# For columns with lists, join elements with a comma and space
+item_metadata_df["categories"] = item_metadata_df["categories"].fillna("").apply(lambda x: ", ".join(x) if isinstance(x, list) else str(x))
+item_metadata_df["features"] = item_metadata_df["features"].fillna("").apply(lambda x: ", ".join(x) if isinstance(x, list) else str(x))
+item_metadata_df["details"] = item_metadata_df["details"].fillna("").apply(lambda x: ", ".join(x) if isinstance(x, list) else str(x))
+
+# Concatenate the columns to form the product description
+item_metadata_df["product_text"] = (
+    item_metadata_df["title"] + " " +
+    item_metadata_df["main_category"] + " " +
+    item_metadata_df["description"] + " " +
+    item_metadata_df["categories"] + " " +
+    item_metadata_df["features"] + " " +
+    item_metadata_df["details"]
+)
+# print(item_metadata_df)
 # Create DataFrame with explicit schema
 metadata_df = spark.createDataFrame(item_metadata_df, schema=schema)
 
+user_reviews_df = user_reviews_df.drop(columns=['images'])
 reviews_df = spark.createDataFrame(user_reviews_df)
-print(item_metadata)
+print("Reviews:",list(reviews_df.columns))
+print("Product Data",list(metadata_df.columns))
 
-# Convert Hugging Face Dataset to Pandas DataFrame
-item_metadata_df = item_metadata.to_pandas()
-print(item_metadata_df)
 
-metadata_df = spark.createDataFrame(item_metadata_df,schema=schema)
+
+
+
 
 # Merge the datasets on the 'asin' column
-combined_df = reviews_df.join(metadata_df, "asin", "inner")
+combined_df = reviews_df.join(metadata_df, "parent_asin", "inner")
 
+# print(combined_df)
 # Load the SentenceTransformer model for product embeddings
 embedding_model = SentenceTransformer('all-MiniLM-L6-v2')
  
 # Generate embeddings for product descriptions
-product_texts = combined_df.select(col("text")).rdd.flatMap(lambda x: x).collect()
+product_texts = combined_df.select(col("product_text")).rdd.flatMap(lambda x: x).collect()
 product_embeddings = embedding_model.encode(product_texts)
 
 # Build FAISS index for product embeddings

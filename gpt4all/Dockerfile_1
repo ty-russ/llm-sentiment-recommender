@@ -1,0 +1,22 @@
+FROM ubuntu
+
+# Download the installer
+RUN apt -y update; apt -y upgrade; apt -y install wget
+RUN wget https://gpt4all.io/installers/gpt4all-installer-linux.run
+RUN chmod +x gpt4all-installer-linux.run
+
+# Install the dependencies
+RUN DEBIAN_FRONTEND=noninteractive apt install -y xorg xorg-dev
+RUN apt -y update; apt -y upgrade; apt -y install wget libfontconfig1 libdbus-1-3 libxcb-glx0  	libx11-xcb1 libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-randr0 libxcb-render-util0 libxcb-shape0 libxcb-sync1 libxcb-xfixes0 libxcb-xinerama0 libxcb-xkb1 libxkbcommon-x11-0 libgl1
+# qt5-default not packaged so install the individuals
+RUN apt install -y qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools
+
+# The installer wants a desktop
+RUN apt install -y xdg-user-dirs
+RUN useradd -m user
+USER user
+RUN xdg-user-dirs-update
+
+# RUN mkdir /root/Desktop/
+CMD test -f /home/user/gpt4all/bin/chat || ./gpt4all-installer-linux.run; /home/user/gpt4all/bin/chat
+# CMD ["tail", "-f", "/dev/null"]
